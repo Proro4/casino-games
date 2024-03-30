@@ -50,6 +50,10 @@
         @media screen and (max-width: 992px) {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
+            margin-top: 0;
+        }
+        @media screen and (max-width: 450px) {
+            grid-template-rows: repeat(1, 1fr);
         }
     }
     &__numbers{
@@ -146,6 +150,9 @@
         @media screen and (max-width: 992px) {
             grid-area: 1 / 1 / 2 / 2;
         }
+        @media screen and (max-width: 450px) {
+            height: 450px;
+        }
         &::after{
             position: absolute;
             content: '';
@@ -157,11 +164,13 @@
             background-position: center;
             background-repeat: no-repeat;   
             animation: 2s roulette linear infinite;
+            @media screen and (max-width: 450px) {            
+                background-size: 100px;
+            }
         }
         &.game {
             .roulette__game-slots{
                 transition: 0.3s all;
-                
                 animation: 6s roulettePlay linear 1;
                 
             } 
@@ -182,6 +191,9 @@
         background-image: url('@/assets/images/games/roulette-table.png');
         background-position: center;
         background-repeat: no-repeat; 
+        @media screen and (max-width: 450px) {            
+            background-size: contain;
+        }
         // animation: 120s roulette linear infinite;
         &::after{
             position: absolute;
@@ -192,7 +204,10 @@
             top: 0;
             background-image: url('@/assets/images/games/roulette-numbers.png');
             background-position: center;
-            background-repeat: no-repeat;   
+            background-repeat: no-repeat;  
+            @media screen and (max-width: 450px) {                
+                background-size: contain; 
+            }
         }
     }
     &__game-arrow{
@@ -203,6 +218,11 @@
         background-image: url('@/assets/images/games/roulette-arrow.png');
         background-position: center top;
         background-repeat: no-repeat;
+        @media screen and (max-width: 450px) {                
+            background-size: 25px; 
+            height: 225px;
+            width: 225px;
+        }
     }
     &__roster-border{
         background: linear-gradient(to bottom, transparent 30%, #7B35D5);

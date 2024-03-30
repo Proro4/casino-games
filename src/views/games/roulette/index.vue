@@ -443,6 +443,7 @@
         });
         const bet_table = [...checkedList.value];
         playGame(bet_table);
+        window.scrollTo({top: 0, left: 0, behavior: "smooth"});
       } else {
         $toast.error("Bet size can't be 0");
       }

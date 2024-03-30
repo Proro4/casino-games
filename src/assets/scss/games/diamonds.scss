@@ -3,6 +3,7 @@
     background: linear-gradient(to bottom, #211B37, #14161C);
     border-radius: 30px;
     position: relative;
+    
     &::after,
     &::before{
         content: '';
@@ -247,6 +248,9 @@
         }
         @media screen and (max-width: 720px){
             height: auto;
+        }
+        @media screen and (max-width: 450px){
+            height: 100px;
         }
     }
     &__game-diamond{

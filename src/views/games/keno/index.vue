@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+eslint-disable vue/multi-word-component-names
 <template>
   <div class="gamescreen keno-screen border">
     <OptionButtons
@@ -19,8 +19,7 @@
               >
                 <p>{{ win.payout }} х</p>
                 <span>
-                  {{ win.profit }}
-                  <!-- <image src=""> -->
+                  {{ win.profit }} 
 
                   <img
                     :src="getCoinIcon(win.coin.toLowerCase())"
@@ -359,5 +358,4 @@
     const getCoinIcon = (icon) => {
       return coinIcons[icon];
     };
-
 </script>

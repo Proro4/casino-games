@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 const API_URL = "https://api.pasino.com";
-const token = "bbff7a2f66131cd070aec3f8e6b6cbf8db66c536fabf5e7687d744a2c0d65643";
+const token = "d9a72f052dbbba0562a03216a49959fdb1549f4d85e9ca09d11a80276974b79c";
 
 export default defineStore("keno", {
   state: () => ({}),

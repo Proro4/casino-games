@@ -98,21 +98,21 @@
             </div>
           </div>
           <div class="gamescreen__form-top">
-            <input-value
-              v-if="!manualAutoStatus"
-              :value="betSize"
-              placeholder="BET SIZE"
-              :onlyNumber="true"
-              @onBlurFunc="() => validBetSize()"
-              @changeValue="(e) => (betSize = e)"
-              class="w-33"
-            >
-              <ButtonSelectList
-                :buttonList="betSizeArray"
-                :activeButtonList="activeButtonList"
-                @changeButtonSelect="(e) => changeButtonSelect(e)"
-              />
-            </input-value>
+                <div class="game-label w-100 w-m-100 min-title mb-20">
+                  <input-value
+                    :value="betSize"
+                    placeholder="BET SIZE"
+                    :onlyNumber="true"
+                    @onBlurFunc="() => validBetSize()"
+                    @changeValue="(e) => (betSize = e)"
+                  >
+                    <ButtonSelectList
+                      :buttonList="betSizeArray"
+                      :activeButtonList="activeButtonList"
+                      @changeButtonSelect="(e) => changeButtonSelect(e)"
+                    />
+                  </input-value>
+                </div>
             <GameButton
               text="Bet"
               @onClick="() => startGame()"
