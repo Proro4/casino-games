@@ -1,0 +1,103 @@
+// general
+$browser-context: 16;
+
+// container settings
+$mar: 15;
+$items: 12;
+$content-width: 1280;
+$content-width-lg: 1580;
+$container: $content-width + 2 * $mar;
+$container-lg: $content-width-lg + 2 * $mar;
+
+// fonts
+$font-family-primary: 'Avenir Next Cyr', sans-serif;
+$font-family-secondary: 'Cafe Nero M54', sans-serif;
+$font-size-primary: 1rem;
+$font-weight-primary: 400;
+$body-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// colors
+$color-black: #1F1E25;
+$color-white: #fff;
+$color-grey: #8F8E92;
+$color-grey-dark: #343241;
+$color-green: #B5EB8C;
+$color-yellow: #FEEB3C;
+$color-orange: #FE843B;
+$color-red: #DD5383;
+$color-teal: #1AFAEA;
+$color-purple: #571698;
+$color-success: $color-green;
+$color-danger: $color-red;
+$color-primary: $color-yellow;
+
+// transitions
+$transition-duration-primary: 0.35s;
+$transition-primary: all $transition-duration-primary ease;
+
+// borders
+$border-radius-primary: 0.25rem;
+
+// box-shadows
+$box-shadow-primary: 0 0 1rem rgba($color-primary, 0.25);
+
+// breakpoints map
+$breakpoints: (
+  xxs: 320px,
+  xs: 480px,
+  sm: 768px,
+  md: 992px,
+  lg: 1280px,
+  xl: 1440px,
+  xxl: 1560px,
+);
+
+:root {
+  --tournament-card-height: 18.125rem;
+  --tournament-card-height-sm: 14.5rem;
+}
+
+.v-select {
+  --vs-colors--lightest: rgba(60,60,60,0.26);
+  --vs-colors--light: rgba(60,60,60,0.5);
+  --vs-colors--dark: #333;
+  --vs-colors--darkest: rgba(0,0,0,0.15);
+  --vs-search-input-color: #fff;
+  --vs-search-input-bg: #292830;
+  --vs-search-input-placeholder-color: inherit;
+  --vs-font-size: 1.1rem;
+  --vs-line-height: 1.4;
+  --vs-state-disabled-bg: #f8f8f8;
+  --vs-state-disabled-color: var(--vs-colors--light);
+  --vs-state-disabled-controls-color: var(--vs-colors--light);
+  --vs-state-disabled-cursor: not-allowed;
+  --vs-border-color: var(--vs-colors--lightest);
+  --vs-border-width: 1px;
+  --vs-border-style: solid;
+  --vs-border-radius: 0.5rem;
+  --vs-actions-padding: 4px 6px 0 3px;
+  --vs-controls-color: #fff;
+  --vs-controls-size: 1;
+  --vs-controls--deselect-text-shadow: 0 1px 0 #fff;
+  --vs-selected-bg: #f0f0f0;
+  --vs-selected-color: #fff;
+  --vs-selected-border-color: var(--vs-border-color);
+  --vs-selected-border-style: var(--vs-border-style);
+  --vs-selected-border-width: var(--vs-border-width);
+  --vs-dropdown-bg: #292830;
+  --vs-dropdown-color: inherit;
+  --vs-dropdown-z-index: 1000;
+  --vs-dropdown-min-width: 160px;
+  --vs-dropdown-max-height: 350px;
+  --vs-dropdown-box-shadow: 0px 3px 6px 0px var(--vs-colors--darkest);
+  --vs-dropdown-option-bg: #000;
+  --vs-dropdown-option-color: var(--vs-dropdown-color);
+  --vs-dropdown-option-padding: 0.35rem 1rem;
+  --vs-dropdown-option--active-bg: #FEEB3C;
+  --vs-dropdown-option--active-color: #000;
+  --vs-dropdown-option--deselect-bg: #fb5858;
+  --vs-dropdown-option--deselect-color: #fff;
+  --vs-transition-timing-function: cubic-bezier(1,-0.115,0.975,0.855);
+  --vs-transition-duration: 150ms;
+}

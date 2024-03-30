@@ -1,0 +1,265 @@
+// ========== ICONS ========== //
+@font-face {
+  src: url('@/assets/fonts/icomoon.woff') format('woff');
+  font-family: 'icomoon';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+
+  &::before {
+    font-family: 'icomoon' !important;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    speak: never;
+  }
+}
+
+.icon-dots-three-horizontal:before {
+  content: "\e919";
+}
+.icon-dot-single:before {
+  content: "\e91a";
+}
+.icon-google:before {
+  content: "\e905";
+}
+.icon-lightning:before {
+  content: "\e91c";
+}
+.icon-user-03:before {
+  content: "\e911";
+}
+.icon-arrow-down-alt:before {
+  content: "\e909";
+}
+.icon-briefcase:before {
+  content: "\e910";
+}
+.icon-close-alt:before {
+  content: "\e913";
+}
+.icon-gif:before {
+  content: "\e917";
+}
+.icon-plane:before {
+  content: "\e91e";
+}
+.icon-plus-alt:before {
+  content: "\e91f";
+}
+.icon-popup-arrow-up:before {
+  content: "\e920";
+}
+.icon-rain:before {
+  content: "\e92f";
+}
+.icon-rewards:before {
+  content: "\e930";
+}
+.icon-smile:before {
+  content: "\e932";
+}
+.icon-discord:before {
+  content: "\e90a";
+}
+.icon-filter:before {
+  content: "\e90b";
+}
+.icon-sort:before {
+  content: "\e90d";
+}
+.icon-facebook:before {
+  content: "\e900";
+}
+.icon-instagram:before {
+  content: "\e901";
+}
+.icon-pinterest-alt:before {
+  content: "\e902";
+}
+.icon-tiktok:before {
+  content: "\e903";
+}
+.icon-denied:before {
+  content: "\e904";
+}
+.icon-blocked:before {
+  content: "\e904";
+}
+.icon-snapchat:before {
+  content: "\e922";
+}
+.icon-user-circle:before {
+  content: "\e923";
+}
+.icon-pencil:before {
+  content: "\e924";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-spinner:before {
+  content: "\e984";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-sphere:before {
+  content: "\e9c9";
+}
+.icon-link:before {
+  content: "\e9cb";
+}
+.icon-attachment:before {
+  content: "\e9cd";
+}
+.icon-eye1:before {
+  content: "\e9ce";
+}
+.icon-eye-blocked:before {
+  content: "\e9d1";
+}
+.icon-plus:before {
+  content: "\ea0a";
+}
+.icon-minus:before {
+  content: "\ea0b";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.icon-arrow-right:before {
+  content: "\ea34";
+}
+.icon-arrow-left:before {
+  content: "\ea38";
+}
+.icon-share2:before {
+  content: "\ea82";
+}
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+.icon-spotify:before {
+  content: "\ea94";
+}
+.icon-telegram:before {
+  content: "\ea95";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-vine:before {
+  content: "\ea97";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-twitch:before {
+  content: "\ea9f";
+}
+.icon-vimeo:before {
+  content: "\eaa0";
+}
+.icon-dribbble:before {
+  content: "\eaa7";
+}
+.icon-behance:before {
+  content: "\eaa8";
+}
+.icon-steam:before {
+  content: "\eaac";
+}
+.icon-skype:before {
+  content: "\eac5";
+}
+.icon-reddit:before {
+  content: "\eac6";
+}
+.icon-linkedin:before {
+  content: "\eac9";
+}
+.icon-pinterest:before {
+  content: "\ead1";
+}
+
+.icon-lightbulb_outline:before {
+  content: "\e912";
+}
+
+.icon-tip:before {
+  content: "\e912";
+}
+
+.icon-eye-off:before {
+  content: "\e914";
+}
+.icon-eye:before {
+  content: "\e915";
+}
+.icon-log-out:before {
+  content: "\e916";
+}
+.icon-settings:before {
+  content: "\e918";
+}
+.icon-copy:before {
+  content: "\e90c";
+}
+.icon-heart:before {
+  content: "\e90f";
+}
+.icon-bell:before {
+  content: "\e92e";
+}
+.icon-calendar:before {
+  content: "\e906";
+}
+.icon-clock:before {
+  content: "\e907";
+}
+.icon-map-pin:before {
+  content: "\e908";
+}
+.icon-check-circle:before {
+  content: "\e90e";
+}
+.icon-check-square:before {
+  content: "\e91b";
+}
+.icon-check:before {
+  content: "\e925";
+}
+.icon-info:before {
+  content: "\e926";
+}
+.icon-download:before {
+  content: "\e927";
+}
+.icon-flag:before {
+  content: "\e928";
+}
+.icon-chevron-right:before {
+  content: "\e929";
+}
+.icon-chevron-left:before {
+  content: "\e92a";
+}
+.icon-chevron-down:before {
+  content: "\e92b";
+}
+.icon-chevron-up:before {
+  content: "\e92c";
+}

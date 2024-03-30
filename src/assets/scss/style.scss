@@ -1,0 +1,57 @@
+// Base
+@import 'variables';
+@import 'base/mixins';
+@import 'base/functions';
+@import 'base/iterators';
+@import 'base/grid';
+@import 'base/normalize';
+
+// Fonts
+@import 'fonts';
+@import 'icons';
+
+// UI
+// @import 'ui/soc';
+// @import 'ui/gallery';
+// @import 'ui/toggle';
+// @import 'ui/modal';
+// @import 'ui/tabs';
+// @import 'ui/rating';
+// @import 'ui/pagination';
+// @import 'ui/radio';
+@import 'ui/switch';
+// @import 'ui/checkbox';
+// @import 'ui/input-quantity';
+// @import 'ui/time-count';
+// @import 'ui/spoilers';
+
+// Vendors
+// @import 'vendors/choices';
+// @import 'vendors/nouislider';
+// @import 'vendors/swiper';
+
+// Form components
+@import 'forms';
+
+// Components
+@import 'components/header';
+@import 'components/footer';
+@import 'components/section';
+@import 'components/cards';
+@import 'components/table';
+
+
+// games
+@import 'gamescreen';
+@import 'games/dice';
+@import 'games/towers';
+@import 'games/crash';
+@import 'games/keno';
+@import 'games/mines';
+@import 'games/diamonds';
+@import 'games/limbo';
+@import 'games/roulette';
+@import 'popups';
+
+// General
+@import 'common';

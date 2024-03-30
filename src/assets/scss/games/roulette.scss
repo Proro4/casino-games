@@ -1,0 +1,323 @@
+.roulette{
+    padding: 50px;
+    background: linear-gradient(to bottom, #211B37, #14161C);
+    border-radius: 30px;
+    position: relative;
+    &::after,
+    &::before{
+        content: '';
+        position: absolute;
+        left: 4%;
+        bottom: 0;
+        width: 92%;
+        height: 35px;
+        background-image: url('@/assets/images/games/diamond-bg-border.png');
+        background-size: cover;
+        background-position: bottom center;
+    }
+    &::before{
+        bottom: inherit;
+        top: 0;
+        transform: rotate(180deg);
+    }
+
+    @media screen and (max-width: 720px){
+        background-image: none;
+        padding: 130px 20px 50px;
+        &::after,
+        &::before{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 992px){
+        padding-top: 100px;
+    }
+    @media screen and (max-width: 670px){
+        padding: 60px 15px 50px;
+    }
+    @media screen and (max-width: 470px){
+        padding: 50px 0px 50px;
+    }
+    &__game{
+        width: 100%;
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: 0.9fr 1.3fr 0.8fr;
+        @media screen and (max-width: 1220px) {
+            grid-template-columns: 0.8fr 1.5fr 0.7fr;
+        }
+        @media screen and (max-width: 992px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+        }
+    }
+    &__numbers{
+        padding: 15px;
+        position: relative;
+        @media screen and (max-width: 992px) {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+    }
+    &__numbers-list{
+        display: grid;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+        @media screen and (max-width: 1220px){
+            grid-gap: 5px; 
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media screen and (max-width: 992px) {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+        }
+    }
+    &__numbers-item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background-color: #252639;
+        transition: 0.3s all;
+        height: 56px;
+        font-size: 20px;
+        font-weight: 650;
+        font-family: 'Avenir Next';
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        &.win-number{
+            background-color: #414368;
+            animation: 1s winSize linear 1;
+        }
+        &:active{
+            transform: scale(0.95);
+        }
+        &:hover{
+            background-color: #5b5d83;
+        }
+        &:nth-child(2n){
+            background-color: #7B35D5;
+            &.win-number{
+                background-color: #9968da;
+                animation: 1s winSize 1;
+            }
+            &:hover{
+                background-color: #a672ea;
+            }
+        }
+        span{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-image: url('@/assets/images/games/roulette-counter-m.png');
+            background-size: contain;
+            background-position: center -3px;
+            background-repeat: no-repeat;
+            font-size: 13px;
+        }
+    }
+    &__numbers-bottom{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .roulette__numbers-item{
+            width: 100px;
+            margin: 10px 5px;
+        }
+    }
+    &__game-roulette{
+        height: 535px;
+        background-image: url('@/assets/images/games/roulette-bottom.png');
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: contain;
+        @media screen and (max-width: 992px) {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-image: url('@/assets/images/games/roulette-center.png');
+            background-position: center;
+            background-repeat: no-repeat;   
+            animation: 2s roulette linear infinite;
+        }
+        &.game {
+            .roulette__game-slots{
+                transition: 0.3s all;
+                
+                animation: 6s roulettePlay linear 1;
+                
+            } 
+        }
+        // &.end-game{
+        //     .roulette__game-slots{
+        //         transition: 0.3s all;
+        //         animation: 2s roulette linear infinite;
+        //     } 
+        // }
+    }
+    &__game-slots{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background-image: url('@/assets/images/games/roulette-table.png');
+        background-position: center;
+        background-repeat: no-repeat; 
+        // animation: 120s roulette linear infinite;
+        &::after{
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-image: url('@/assets/images/games/roulette-numbers.png');
+            background-position: center;
+            background-repeat: no-repeat;   
+        }
+    }
+    &__game-arrow{
+        height: 275px;
+        width: 275px;
+        border-radius: 50%;
+        position: relative;
+        background-image: url('@/assets/images/games/roulette-arrow.png');
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+    &__roster-border{
+        background: linear-gradient(to bottom, transparent 30%, #7B35D5);
+        padding: 3px;
+        border-radius: 5px;
+        @media screen and (max-width: 992px) {
+            grid-area: 3 / 1 / 4 / 2; 
+            margin-bottom: 25px;
+        }
+    }
+    &__roster{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient( to bottom, #1F1A32, #15161F);
+        padding: 100px 35px 35px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-gap: 10px;
+        border-radius: 5px;
+        @media screen and (max-width: 1220px) {
+            padding: 75px 15px 15px;
+        }
+        @media screen and (max-width: 992px) {
+            padding: 15px;
+        }
+    }
+    &__roster-item{
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #252639;
+        font-size: 20px;
+        font-weight: 650;
+        font-family: 'Avenir Next';
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        @media screen and (max-width: 1220px) {
+            font-size: 18px;
+        }
+        span{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-image: url('@/assets/images/games/roulette-counter-m.png');
+            background-size: contain;
+            background-position: center -3px;
+            background-repeat: no-repeat;
+            font-size: 13px;
+        }
+        &:active{
+            transform: scale(0.98);
+        }
+        &:hover{
+            background-color: #5b5d83;
+        }
+        &:nth-child(1) {grid-area: 1 / 1 / 2 / 3; }
+        &:nth-child(2) { grid-area: 2 / 1 / 3 / 3; }
+        &:nth-child(3) { grid-area: 3 / 1 / 4 / 3; }
+        &:nth-child(4) { grid-area: 4 / 1 / 5 / 2; }
+        &:nth-child(5) { grid-area: 4 / 2 / 5 / 3; }
+        &:nth-child(6) { grid-area: 5 / 1 / 6 / 2; }
+        &:nth-child(7) { grid-area: 5 / 2 / 6 / 3; }
+        &:nth-child(8) { 
+            background: linear-gradient(to right, #7B35D5, #6225D5);
+            grid-area: 6 / 1 / 7 / 2;
+            &:hover{
+                background: linear-gradient(to right, #9048ef, #7835f4);
+            }
+         }
+        &:nth-child(9) { grid-area: 6 / 2 / 7 / 3; }
+    }
+}
+
+@keyframes roulette {
+    0%{
+        transform: rotate(-30deg);
+    }
+    100%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(-30deg);
+    }
+}
+@keyframes roulettePlay {
+    0%{
+        transform: rotate(0deg);
+    }
+    70%{
+        transform: rotate(3600deg);
+    }
+    100%{
+        transform: rotate(3200deg);
+    }
+    
+}
+
+@keyframes winSize {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: rotate(1.2);
+    }
+    100%{
+        transform: rotate(1);
+    }
+}

@@ -1,0 +1,280 @@
+// ========== Section General ========== //
+.section {
+  &__wrap {
+    padding: px(60) 0;
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: px(20);
+    }
+  }
+
+  &__body {
+    &:not(:last-child) {
+      margin-bottom: px(50);
+    }
+
+    > *:not(:last-child) {
+      margin-bottom: px(20);
+    }
+  }
+
+  &__btn-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: px(10);
+  }
+}
+
+// ========== Section Img Text ========== //
+.img-text {
+  &--reversed {
+    .img-text__row {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__wrap {
+    padding: px(80) 0;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: px(-20) px(-30);
+  }
+
+  &__col {
+    flex: 0 0 50%;
+    padding: px(20) px(30);
+
+    @include respond-below(md) {
+      flex: 0 0 100%;
+    }
+  }
+
+  &__img {
+    position: relative;
+    padding-bottom: 65%;
+    background-color: rgba($color-primary, 0.1);
+
+    &--contain {
+      padding-bottom: 0;
+      background-color: none;
+      text-align: center;
+
+      img {
+        position: static;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// ========== Section Hero ========== //
+.hero {
+  background: url('@/assets/images/home/hero-bg.jpg') no-repeat top left / 100% 100%;
+
+  &__wrap {
+    padding: 0 rem($mar);
+
+    @include respond-above(md) {
+      padding: 0 rem(60);
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 0 0 50%;
+    max-width: 50%;
+
+    &:first-child {
+      @include respond-below(md) {
+        flex: 0 0 60%;
+        max-width: 60%;
+      }
+    }
+
+    &:last-child {
+      @include respond-below(md) {
+        flex: 0 0 40%;
+        max-width: 40%;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: 20;
+    padding: rem(80) 0 rem(60);
+
+    @include respond-below(md) {
+      padding: rem(34) 0;
+    }
+  }
+
+  &__header {
+    margin-bottom: rem(30);
+    padding-bottom: rem(30);
+    background: url('@/assets/images/layout/title-decor.svg') no-repeat left bottom / auto;
+  }
+
+  &__title {
+    font-size: rem(32);
+    text-transform: uppercase;
+
+    @include respond-below(md) {
+      margin-bottom: rem(12);
+      padding-bottom: rem(12);
+      font-size: rem(16);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(8);
+    }
+
+    span {
+      display: block;
+      font-size: 150%;
+    }
+  }
+
+  &__subtitle {
+    font-size: rem(21);
+    line-height: 1.5;
+
+    span {
+      display: block;
+      color: $color-yellow;
+    }
+  }
+
+  &__img {
+    position: relative;
+    height: 100%;
+
+    img {
+      display: block;
+      position: absolute;
+      right: 50%;
+      bottom: 0;
+      max-width: none;
+      max-height: 110%;
+      transform: translateX(50%);
+      object-fit: contain;
+      object-position: center bottom;
+
+      @include respond-above(md) {
+        height: 115%;
+      }
+
+      @include respond-below(md) {
+        max-height: 75%;
+      }
+    }
+  }
+}
+
+// ========== Section Games ========== //
+.section-games {
+  position: relative;
+  z-index: 10;
+  
+  &__wrap {
+    padding: rem(40) 0;
+  }
+
+  &__header {
+    margin-bottom: rem(32);
+    border: solid #3A3F50;
+    border-width: rem(1) 0;
+    padding: rem(20) 0;
+  }
+
+  &__title {
+    text-transform: uppercase;
+  }
+}
+
+// ========== Section Slots ========== //
+.section-slots {
+  position: relative;
+  z-index: 10;
+  
+  &__wrap {
+    padding: rem(40) 0;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+
+    @include respond-below(md) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__header {
+    margin-bottom: rem(42);
+    border: solid #3A3F50;
+    border-width: rem(1) 0;
+    padding: rem(20) rem(15);
+  }
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__body {
+    @include respond-above(md) {
+      padding: 0 rem(15);
+    }
+  }
+}
+
+
+.section-title {
+  text-transform: uppercase;
+}
+
+.section-contact {
+  background: url('@/assets/images/contact/bg.jpg') no-repeat top left / cover;
+
+  &__wrap {
+    padding: rem(110) 0 rem(120);
+
+    @include respond-below(md) {
+      padding: rem(48) 0;
+    }
+
+    @include respond-above(lg) {
+      padding-left: rem(80);
+      padding-right: rem(80);
+    }
+  }
+}

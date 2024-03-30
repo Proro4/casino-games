@@ -1,0 +1,521 @@
+
+.creash-screen{
+    display: flex;
+    flex-wrap: wrap;
+    .gamescreen__form-top{
+        @media screen and (max-width: 1224px){
+            flex-direction: column-reverse;
+            align-items: center;
+            .game-button{
+                margin: 0;
+                margin-bottom: 30px;
+                max-width: 90%;
+            }
+        }
+    }
+}
+.crash{
+    width: 68%;
+    text-align: center;
+    position: relative;
+    @media screen and (max-width: 1220px) {
+        width: 100%;
+    }
+    h1{
+        font-size: 30px;
+        font-family:Arial, Helvetica, sans-serif;
+        color: white;
+        padding: 15px;
+    }
+    canvas{
+        width: 100%;
+    }
+    &__content{
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 25px;
+        // overflow: hidden;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+    &__content-bottom{
+        position: relative;
+        height: 0;
+        &.show{
+            height: auto;
+        }
+        @media screen and (max-height: 1220px) {
+            height: auto;
+        }
+    }
+    &__history{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+    &__history-item{
+        height: 37px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        background-color: #252939;
+        border-radius: 4px;
+        font-family: 'Avenir Next';
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0 3px;
+        @media screen and (max-width: 1660px){
+            height: 30px;
+            font-size: 14px;
+            padding: 0 10px;
+        }
+        &.plus{
+            background-color: #7733F2;
+        }
+    }
+    &__canvas{
+        background-image: url('@/assets/images/games/game/crash-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: -5px;
+        @media screen and (max-width: 1224px){
+            padding-top: 50px;
+        }
+    }
+    &__animate-block{
+        position: absolute;
+        left: 0;
+        top: 0;
+        max-height: 732px;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        user-select: none;
+        overflow: hidden;
+    }
+    &__rocket{
+        position: absolute;
+        right: 10px;
+        top: 155px;
+        background-image: url('@/assets/images/games/game/crash-rocket.png');
+        width: 342px;
+        height: 406px;
+        user-select: none;
+        pointer-events: none;
+        transition: 1s all;
+        transform: translate3d(-500px, 2100px, 0) scale(1.5) rotate(0deg);
+        &.animate{
+            animation: rocketAnimate linear 35s infinite;
+            .crash__fire{
+                animation: animateFireRocket 35s infinite; 
+            }
+        }
+    }
+    &__rocket-lines{
+        position: absolute;
+        width: 10px;
+        height: 250px;
+        transform: rotate(35deg);
+        background-image: url('@/assets/images/games/rocket-line.png');
+        &:first-child{ 
+            top: 207px;
+            left: -20px;
+            transform: rotate(43deg);
+            animation: rocketLine 2s infinite;
+        }
+        &:nth-child(2){ 
+            top: 240px;
+            left: 195px;
+            transform: rotate(27deg) scale(1.2);
+            animation: rocketLine 3s infinite;
+        }
+        &:nth-child(3){
+            top: 45px;
+            left: 100px;
+            transform: rotate(43deg) scale(0.8);
+            animation: rocketLine 1.5s infinite;
+        }
+        &:nth-child(4){
+            top: 235px;
+            left: 133px;
+            transform: rotate(33deg) scale(0.7);
+            animation: rocketLine 1.5s infinite;
+        }
+        &:nth-child(5){
+            top: 50px;
+            left: 184px;
+            transform: rotate(36deg);
+            animation: rocketLine 1s infinite;
+        }
+        &:nth-child(6){
+            top: 75px;
+            left: 247px;
+            transform: rotate(29deg);
+            animation: rocketLine 2s infinite;
+        }
+    }
+    &__fire{
+        position: absolute;
+        left: 87px;
+        top: 265px;
+        height: 100px;
+        width: 10px;
+        background: rgba(177, 177, 255, 0.1);
+        filter: blur(5);
+        transform: rotate(37deg);
+        border-radius: 50%;
+    }
+    &__content-top{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__trands{
+        background-color: #10121b;
+        transition: 0.3s all;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        position: relative;
+        &.show{
+            z-index: 100;
+            opacity: 1;
+            height: 350px;
+        }
+    }
+    &__trands-top{
+        padding: 36px 25px 0 25px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__trands-table{
+        padding: 33px 22px 50px;
+        background-color: #161540;
+        display: flex;
+        justify-content: start;
+        position: relative;
+    }
+    &__trands-bck{
+        position: absolute;
+        left: 22px;
+        top: 33px;
+        height: calc(100% - 83px);
+        width: calc(100% - 44px);
+        background-image:url('@/assets/images/games/table-block.png');
+        background-repeat: space;
+    }
+    &__trands-column{
+        display: flex;
+        flex-direction: column;
+        height: 224px;
+        position: relative;
+        z-index: 10;
+    }
+    &__trands-item{
+        height: 28px;
+        min-height: 28px;
+        width: 28px; 
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__game{
+        position: relative;
+        transition: 0.3s all;
+        &.show-trands{
+            transform: translateY(-110px);
+        }
+    }
+    &__trands-status{
+        height: 19px;
+        width: 19px;
+        border-radius: 50%;
+        &.win{
+            background-color: #B4E68A;
+        }
+        &.lose{
+            background-color: #DB5287;
+        }
+    }
+
+  &__form{
+    margin-top: auto;
+  }
+  &__option-buttons{
+    position: absolute;
+    right: 0;
+    bottom: 450px;
+    width: 100%; 
+    @media screen and (max-width: 1660px) {
+        bottom: inherit;
+        top: 80px;
+    }
+    @media screen and (max-width: 610px) {
+        top: -70px;
+    }
+  }
+  &__center{
+    position: absolute;
+    left: 0;
+    top: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 1660px){
+        top: 200px;
+    }
+    p{
+        font-size: 68px;
+        font-weight: bold;
+        color: white;
+        font-family: 'Avenir Next';
+        @media screen and (max-width: 1224px){
+            font-size: 48px;
+        }
+        &.animate{
+            animation: animateCenterText 10s infinite;
+        }
+        span{
+            text-transform: uppercase;
+            font-size: 48px;
+            color: #2A79D1;
+        }
+    }
+  } 
+}
+@keyframes rocketLine {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes rocketAnimate {
+    0%{
+        transform: translate3d(-1500px, 2100px, 0) scale(1.5) rotate(0deg);
+    }
+    2%{
+        transform: translate3d(-110px, 200px, 0) scale(1.3) rotate(1deg);
+    }
+    4%{
+        transform: translate3d(-110px, 180px, 0) scale(1.1) rotate(-1deg);
+    }
+    6%{
+        transform: translate3d(-90px, 95px, 0) scale(1) rotate(1deg);
+    }
+    8%{
+        transform: translate3d(-90px, 95px, 0) scale(0.98) rotate(1deg);
+    }
+    10%{
+        transform: translate3d(-80px, 90px, 0) scale(0.96) rotate(1deg);
+    }
+    12%{
+        transform: translate3d(-80px, 90px, 0) scale(0.94) rotate(-1deg);
+    }
+    14%{
+        transform: translate3d(-80px, 90px, 0) scale(0.92) rotate(1deg);
+    }
+    16%{
+        transform: translate3d(-70px, 85px, 0) scale(0.9) rotate(-1deg);
+    }
+    18%{
+        transform: translate3d(-70px, 85px, 0) scale(0.88) rotate(1deg);
+    }
+    20%{
+        transform: translate3d(-60px, 80px, 0) scale(0.86) rotate(-1deg);
+    }
+    25%{
+        transform: translate3d(-50px, 75px, 0) scale(0.84) rotate(1deg);
+    }
+    30%{
+        transform: translate3d(-40px, 70px, 0) scale(0.79) rotate(1deg);
+    }
+    35%{
+        transform: translate3d(-30px, 65px, 0) scale(0.77) rotate(-1deg);
+    }
+    40%{
+        transform: translate3d(-20px, 60px, 0) scale(0.75) rotate(1deg);
+    }
+    45%{
+        transform: translate3d(-10px, 55px, 0) scale(0.73) rotate(-1deg);
+    }
+    50%{
+        transform: translate3d(0px, 50px, 0) scale(0.72) rotate(1deg);
+    }
+    60%{
+        transform: translate3d(10px, 45px, 0) scale(0.69) rotate(-1deg);
+    }
+    70%{
+        transform: translate3d(10px, 40px, 0) scale(0.66) rotate(1deg);
+    }
+    80%{
+        transform: translate3d(30px, 2px, 0) scale(0.63) rotate(0);
+    }
+    90%{
+        transform: translate3d(300px, -1000px, 0) scale(0.59) rotate(0);
+    }
+    95%{
+        transform: translate3d(500px, 2100px, 0) scale(0.57) rotate(0);
+    }
+    100%{
+        transform: translate3d(-1500px, 2100px, 0) scale(1.5) rotate(0deg);
+    }
+}
+
+@keyframes animateFireRocket {
+    0%{ 
+        box-shadow: 0px 0 0px 0px rgba(177, 177, 255, 0.2);
+    }
+    80%{ 
+        filter: blur(2);
+        box-shadow: -5px 0 20px 20px rgba(177, 177, 255, 0.6);
+    }
+    100%{ 
+        box-shadow: 0px 0 0px 0px rgba(177, 177, 255, 0.2);
+    }
+}
+@keyframes animateCenterText {
+    0%{
+        transform: scale(0.9);
+    }
+    50%{
+        transform: scale(1.3);
+    }
+    100%{
+        transform: scale(0.9);
+    }
+}
+.crash-players{
+    display: flex;
+    background-color: #101218;
+    margin-left: 15px;
+    padding: 10px;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: calc(32% - 15px);
+    height: 745px;
+    @media screen and (max-width: 1880px) {
+        height: 640px;
+    }
+    @media screen and (max-width: 1220px) {
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+        bottom: 100px;
+    }
+    &__titles{
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        max-height: 30px;
+        padding-right: 25px;
+        p{
+            color: white;
+            font-size: 16px;
+            font-family: 'Cafe Nero M54';
+            text-align: center;
+            width: 26%;
+            max-width: 26%; 
+            &:nth-child(2){
+                content: '.';
+                align-items: center;
+                position: relative;
+                font-size: 26px;
+                bottom: 8px;
+                font-weight: bold;
+                font-family: 'Avenir Next';
+                width: 18%;
+                max-width: 18%; 
+            }
+        }
+    }
+    &__content{
+        height: 690px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 3px;
+            overflow: visible;
+          }
+          
+        &::-webkit-scrollbar-track {
+            background: #292830;
+          }
+          
+        &::-webkit-scrollbar-thumb {
+            width: 20px;           
+            background-color: #471C87;
+            border-radius: 20px; 
+          }
+    }
+    &__list{
+        display: flex;
+        flex-direction: column;
+        padding-right: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        @media screen and (max-width: 1660px){
+            padding-right: 10px;
+        }
+    }
+    &__item{
+        display: flex;
+        height: 56px;
+        align-items: center;
+        padding: 0 5px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        background: linear-gradient(to right, #161922 30%, #262243);
+        p{
+            color: white;
+            width: 26%;
+            max-width: 26%; 
+            font-size: 14px;
+            font-weight: normal;
+            font-family: 'Avenir Next';
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:first-child{
+                text-align: left;
+                justify-content: flex-start;
+                padding-left: 10px;
+            }
+            &:nth-child(2){
+                width: 18%;
+                max-width: 18%; 
+            }
+            img{
+                height: 15px;
+                width: 15px;
+                object-fit: contain;
+                margin-right: 5px;
+            }
+            @media screen and (max-width: 1660px){
+                overflow: hidden;
+                white-space: break-spaces;
+            }
+            &:nth-child(3){
+                color: #7F2AC6;
+            }
+            &:nth-child(4){
+                color: #356BAF;
+            }
+
+        }
+    }
+}

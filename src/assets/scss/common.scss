@@ -1,0 +1,660 @@
+// ========== GLOBAL STYLES ========== //
+
+html {
+  font-size: px($browser-context);
+
+  @include respond-below(md) {
+    font-size: 14px;
+  }
+}
+
+body {
+  padding-top: rem(77);
+  background-color: #1F1E25;
+  font-family: $font-family-primary;
+  font-size: $font-size-primary;
+  font-weight: $font-weight-primary;
+  line-height: $body-line-height;
+  color: $color-white;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $color-grey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-primary;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-black;
+}
+
+// avoid content moving on overflow: hidden
+.disable-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.scroll-container {
+  padding-right: rem(20);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: rem(4);
+    height: rem(4);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #1F1E25;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: rem(4);
+    background: linear-gradient(101deg, #FEEB3C 45.46%, #FE843B 107.76%);
+  }
+}
+
+// wrapper to prevent horizontal scroll
+// if you want use position: sticky; - need to remove // overflow: hidden // !!!
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// container
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 px($mar);
+
+  &--lg {
+    max-width: px($container-lg);
+  }
+}
+
+.main-layout {
+  width: 100%;
+
+  &__content {
+    padding: 0 rem($mar);
+    padding-bottom: rem(80);
+
+    @include respond-above(xxl) {
+      padding: 0 rem(50) 0 rem(10);
+    }
+  }
+}
+
+// section offset, imit container
+.offset-container {
+  padding-left: max(px($mar), calc((100% - px($content-width)) / 2));
+}
+
+/* Hiding class, making content visible only to screen readers but not visually */
+/* "sr" meaning "screen-reader" */
+.sr-only:not(:focus, :active) {
+  position: absolute;
+  clip-path: inset(50%);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+}
+
+// ========== TYPOGRAPHY ========== //
+.text-block {
+  ol,
+  ul {
+    li {
+      &:not(:last-child) {
+        margin-bottom: px(20);
+      }
+    }
+  }
+
+  ol {
+    list-style-position: outside;
+    padding-left: 1rem;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  mark {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  del {
+    background-color: #fbb;
+    text-decoration: line-through;
+  }
+
+  ins {
+    background-color: #d4fcbc;
+    text-decoration: none;
+  }
+
+  blockquote {
+    border-left: px(3) solid $color-primary;
+    padding-left: px(15);
+  }
+
+  > *:not(:last-child) {
+    margin-bottom: rem(24);
+  }
+}
+
+.pages-list {
+  padding-left: 1rem;
+
+  > li {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      text-decoration: underline;
+      transition: color $transition-duration-primary;
+
+      @include hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-secondary;
+  font-weight: 400;
+  line-height: $heading-line-height;
+  text-transform: uppercase;
+}
+
+h1,
+.h1 {
+  font-size: rem(55);
+
+  @include respond-below(xl) {
+    font-size: rem(42);
+  }
+}
+
+h2,
+.h2 {
+  font-size: rem(24);
+}
+
+h3,
+.h3 {
+  font-size: px(24);
+}
+
+h4,
+.h4 {
+  font-size: px(20);
+}
+
+h5,
+.h5 {
+  font-size: 1rem;
+}
+
+h6,
+.h6 {
+  font-size: 0.75rem;
+}
+
+// Text Columns
+.columns-2 {
+  column-count: 2;
+  column-gap: rem(64);
+
+  @include respond-below(md) {
+    column-count: 1;
+  }
+}
+
+// Divider
+.divider {
+  border-bottom: rem(1) solid #3A3F50;
+}
+
+// Section Games
+.section-games {
+  .swiper-slide {
+    margin-bottom: 30px;
+  }
+}
+
+.swiper-slide {
+  width: 100%;
+}
+
+// Total Earned
+.total-earned {
+  display: flex;
+  align-items: flex-end;
+  border: rem(2) solid #3A3F50;
+  border-radius: rem(8);
+  padding: rem(16) rem(20);
+  background-color: #282634;
+
+  &__value {
+    margin-right: rem(8);
+    font-size: rem(32);
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba($color-white, 0.7);
+  }
+
+  &__label {
+    font-size: rem(14);
+    font-weight: 450;
+    line-height: 2.4;
+    color: rgba($color-white, 0.7);
+  }
+}
+
+// Helpers
+.pc-only {
+  @include respond-below(md) {
+    display: none;
+  }
+}
+
+.mobile-only {
+  @include respond-above(md) {
+    display: none;
+  }
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// Text Colors
+.text-success {
+  color: $color-success;
+}
+
+.text-danger {
+  color: $color-danger;
+}
+
+.text-gold, 
+.text-yellow {
+  color: $color-yellow;
+}
+
+.soc {
+  display: flex;
+  margin: rem(-8) rem(-12);
+
+  > li {
+    margin: rem(8) rem(12);
+
+    > a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: rem(48);
+      height: rem(48);
+      background-color: #1F1E25;
+      font-size: rem(20);
+      color: $color-white;
+      transition: $transition-primary;
+
+      @include hover {
+        background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+        color: $color-black;
+      }
+
+      &:focus,
+      &:active {
+        background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+        color: $color-black;
+      }
+    }
+  }
+}
+
+.text-throwline {
+  display: flex;
+  align-items: center;
+  gap: rem(18);
+  font-size: rem(16);
+  font-weight: 600;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    flex: 1 1 auto;
+    height: rem(1);
+    background-color: #3A3F50;
+  }
+}
+
+// QR Code Card
+.qr-code {
+  display: inline-flex;
+  border-radius: rem(8);
+  width: rem(204);
+  height: rem(204);
+  padding: rem(2);
+  background-color: $color-white;
+
+  &--sm {
+    flex: 0 0 rem(120);
+    width: rem(120);
+    height: rem(120);
+  }
+
+  img {
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+// Deposit Card
+.deposit-card {
+  position: relative;
+  border-radius: rem(8);
+  padding: rem(28) rem(20);
+  background-color: #292830;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: rem(-2);
+    border-radius: inherit;
+    background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(16);
+  }
+
+  &__title {
+    font-size: rem(17);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    font-size: rem(20);
+    font-weight: 500;
+
+    strong {
+      font-weight: 500;
+      color: $color-yellow;
+    }
+  }
+}
+
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.slide-right-enter, .slide-right-leave-to {
+  transform: translateY(20%);
+  opacity: 0;
+}
+
+.tabs-fade-enter-active, .tabs-fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.tabs-fade-enter, .tabs-fade-leave-to {
+  opacity: 0;
+}
+
+
+.uq-medals-card {
+  border-radius: rem(6);
+  padding: rem(20);
+  background-color: #1F1E25;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(12);
+    margin-bottom: rem(16);
+  }
+
+  &__title {
+    font-size: rem(14);
+    text-transform: uppercase;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(8);
+    border: none;
+    border-radius: rem(4);
+    padding: rem(4) rem(20);
+    background-image: linear-gradient(101deg, #FEEB3C 45.46%, #FE843B 107.76%);
+    font-size: rem(12);
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-12deg);
+  }
+}
+
+.uq-medal {
+  display: flex;
+  border: rem(2) solid #3a3f50;
+  border-radius: 50%;
+  width: rem(48);
+  height: rem(48);
+  background-color: #292830;
+  overflow: hidden;
+
+  img {
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.swiper-wrap {
+  position: relative;
+  padding-left: rem(24);
+  padding-right: rem(24);
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: $color-white;
+
+    &::after {
+      font-size: rem(14);
+      font-weight: 700;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+}
+
+#swiper-uq-medals {
+  .swiper-slide {
+    width: auto;
+  }
+}
+
+.uq-stats-card {
+  position: relative;
+  z-index: 0;
+  border-radius: rem(6);
+  padding: rem(14);
+  background-color: #1F1E25;
+  color: $color-white;
+  transition: 
+    background-color $transition-duration-primary, 
+    color $transition-duration-primary;
+
+  @include hover {
+    background-color: $color-yellow;
+    color: $color-black;
+
+    &::after {
+      opacity: 1;
+    }
+
+    .uq-stats-card__label {
+      color: $color-black;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(101deg, #FEEB3C 45.46%, #FE843B 107.76%);
+    opacity: 0;
+    transition: opacity $transition-duration-primary;
+  }
+
+  &__label {
+    margin-bottom: rem(4);
+    font-family: $font-family-secondary;
+    font-size: rem(12);
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: rgba($color-white, 0.4);
+    transition: color $transition-duration-primary;
+  }
+
+  &__value {
+    font-size: rem(18);
+    font-weight: 700;
+  }
+}
+
+.uq-card {
+  border-radius: rem(6);
+  padding: rem(20);
+  background-color: #1F1E25;
+
+  &__title {
+    margin-bottom: rem(8);
+    font-size: rem(16);
+  }
+
+  &__body {
+    font-size: rem(12);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+.uq-info {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    position: relative;
+    margin-right: rem(16);
+    flex: 0 0 rem(86);
+    border: 0.125rem solid #feeb3c;
+    border-radius: 50%;
+    height: rem(86);
+    padding: rem(12);
+    background-color: #3a3847;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      width: rem(40);
+      height: rem(40);
+      background: url("@/assets/images/layout/slot-game-media-img-decor.svg")
+        no-repeat center / contain;
+      transform: translate(30%, 20%);
+    }
+
+    img {
+      border-radius: inherit;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(4);
+    font-size: rem(14);
+    text-transform: uppercase;
+  }
+
+  &__games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(8);
+  }
+}
+

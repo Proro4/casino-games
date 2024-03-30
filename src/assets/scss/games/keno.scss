@@ -1,0 +1,356 @@
+.keno{
+    padding: 130px 90px 50px;
+    position: relative;
+    background-color: #12131E;
+    border-radius: 40px;
+    background-image: url('@/assets/images/games/keno-bg.png');
+    background-position: center;
+    background-size: cover;
+    @media screen and (max-width: 992px){
+        border-radius: 0;
+    }
+    &::after,
+    &::before{
+        content: '';
+        position: absolute;
+        left: 4%;
+        bottom: 0;
+        width: 92%;
+        height: 35px;
+        background-image: url('@/assets/images/games/keno-border.png');
+        background-size: cover;
+        background-position: bottom center;
+    }
+    &::before{
+        bottom: inherit;
+        top: 0;
+        transform: rotate(180deg);
+    }
+
+    @media screen and (max-width: 720px){
+        background-image: none;
+        padding: 130px 20px 50px;
+        &::after,
+        &::before{
+            display: none;
+        }
+    }
+    &__table{
+        display: grid;
+        grid-template-rows: repeat(5, 63px);
+        grid-template-columns: repeat(8, 63px);
+        grid-gap: 11px;
+        justify-content: end;
+        position: relative;
+        @media screen and (max-width: 1680px){
+            grid-template-rows: repeat(5, 53px);
+            grid-template-columns: repeat(8, 53px);
+        }
+        @media screen and (max-width: 1450px){
+            grid-template-rows: repeat(5, 40px);
+            grid-template-columns: repeat(8, 40px);
+        }
+        @media screen and (max-width: 992px){
+            grid-template-rows: repeat(5, 55px);
+            grid-template-columns: repeat(8, 55px);
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        @media screen and (max-width: 620px){
+            grid-template-rows: repeat(8, 55px);
+            grid-template-columns: repeat(5, 55px);
+        }
+    }
+    &__table-item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        user-select: none;
+        cursor: pointer;
+        transition: 0.3s all;
+        position: relative;
+        background: linear-gradient(-45deg, white, #D29B0C, white);
+        p{
+            font-size: 20px;
+            font-family: 'Avenir Next';
+            font-weight: 650;
+            position: relative;
+            z-index: 1;
+            background-color: #D29B0C;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: 0.3s all;
+            color: black;
+        }
+        &:hover{
+            transform: scale(1.05);
+        }
+        &.choice{
+            p{
+                height: 82%;
+                width: 82%;
+                color: white;
+            }
+        }
+        &.blocked{
+            opacity: 0.5;
+            user-select: none;
+            pointer-events: none;
+        }
+        &.draw-number{
+            background: #933BFF;
+            user-select: none;
+            pointer-events: none;
+            &.choice{
+                user-select: auto;
+                pointer-events: auto;
+            }
+            p{
+                background-color: #933BFF;
+                color: white;
+            }
+        }
+        &.winNumber{
+            background: linear-gradient(-45deg, white, #933BFF, white);
+            &::after{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 100;
+                background-image: url('@/assets/images/games/keno-win.png');
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+        }
+        &.empty-number{
+            background: linear-gradient(-45deg, white, #252639, white);
+            user-select: none;
+            pointer-events: none;
+            p{
+                background-color: #252639;
+                color: white;
+            }
+            &.choice{
+                user-select: auto;
+                pointer-events: auto;
+            }
+        }
+    }
+    &__bottom{
+
+        padding: 40px 0;
+    }
+    &__play-empty{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+    &__info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        position: relative;
+    }
+    &__info-item{
+        max-width: 20%;
+        min-width: 8%;
+        width: 100%;
+        margin: 0 1%;
+        p{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            width: 100%;
+            border: 1px solid #8536D9;
+            border-radius: 4px;
+        }
+        span{
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        &:hover{ 
+            .keno__info-modal{
+                display: flex;
+            }
+        }
+    }
+    &__info-modal{
+        position: absolute;
+        width: 100%;
+        min-height: 100px;
+        bottom: calc(100% + 30px);
+        left: 0;
+        background: #12141C;
+        padding: 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 100;
+        border: 1px solid #8536D999;
+        display: none;
+    }
+    &__info-label{
+        width: 100%;
+        box-sizing: border-box;
+        padding-right: 15px;
+        span{
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 10px;
+        }
+    }
+    &__info-chance{
+        display: flex;
+        align-items: center;
+        height: 36px;
+        width: 100%;
+        border: 1px solid #8536D9;
+        border-radius: 4px;
+        color: white;
+        padding: 12px;
+        height: 49px;
+        border: 2px solid rgba(133, 54, 217, 0.5019607843);
+        background-color: rgba(16, 18, 27, 0.5019607843);
+    }
+    &__win{
+        position: absolute;
+        height: 180px;
+        width: 320px;
+        background-color: #10121B;
+        border-radius: 8px;
+        border: 4px solid #8536D9;
+        z-index: 1000;
+        top: calc(50% - 90px);
+        left: calc(50% - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        @media screen and (max-width:992px){
+            left: calc(50% - 160px);
+        }
+        p{
+            font-size: 36px;
+            font-family: 'Avenir Next';
+            font-weight: 600;
+        }
+        span{
+            font-size: 24px;
+            font-family: 'Avenir Next';
+            font-weight: 600;
+        }
+        img{
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+        }
+    }
+    &__buttons{
+        display: flex;
+        @media screen and (max-width:992px) {
+            flex-direction: column;
+        }
+    }
+}
+
+
+.game-select{
+    background-color: #282F38;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 13px 19px;
+    position: relative;
+    &__choice-label{
+        font-family: 'Avenir Next';
+        font-size: 15px;
+        display: flex;
+        align-items: center; 
+    }
+    &__choice{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;   
+     cursor: pointer;
+    }
+    &__arrow{
+        position: relative;
+        height: 6px;
+        width: 13px;
+        margin-left: 20px;
+        &:before,
+        &:after{
+            content:'';
+            position: absolute;
+            top: 0px;
+            height: 10px;
+            width: 2px;
+            background-color: white;
+        }
+        &:after{
+            transform: rotate(-45deg);
+            right: 7px
+        }
+        &:before{
+            transform: rotate(45deg);
+            right: 0;
+        }
+    }
+    &__choice-item{
+        display: flex;
+    }
+    &__list{
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-color: #1B1E2A; 
+        border-radius: 5px;
+        padding: 5px 0px;
+    }
+    &__item{
+        padding: 15px 18px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        &:hover{
+            background-color: #303541;
+        } 
+    }
+}
+.keno-btn{
+    margin-top: 40px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #8536D9;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Avenir Next';
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    &.auto{
+        background-color: #282F38;
+    }
+    &:active{
+        opacity: 0.7;
+    }
+}

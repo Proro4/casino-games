@@ -1,0 +1,421 @@
+// ========== BUTTONS ========== //
+.btn {
+  outline: none;
+  border: none;
+  border-radius: rem(36);
+  padding: rem(18) rem(36);
+  background: linear-gradient(101.09deg, $color-yellow 45%, $color-orange 100%);
+  background-size: 300% 100%;
+  background-position: 60%;
+  box-shadow: 0 0.25rem 0 rgba(0, 0, 0, 0.25), inset 0 3px 0 #E1A926;
+  font-size: rem(16);
+  font-weight: 750;
+  line-height: 1.225;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-black;
+  cursor: pointer;
+  transition: $transition-primary;
+
+  &:not(.btn--secondary, .btn--third) {
+    @include hover {
+      background-position: 100% 0;
+    }
+  }
+
+  &--secondary {
+    position: relative;
+    border-radius: 0.25rem;
+    padding: rem(12) rem(24);
+    background: url('@/assets/images/layout/btn-bg.svg') no-repeat top left / 100% 100%;
+    box-shadow: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0.4rem;
+      right: 0.5rem;
+      height: 100%;
+      border-radius: inherit;
+      transform: skew(10deg);
+      transition: $transition-primary;
+    }
+
+    @include hover {
+      &::after {
+        box-shadow: 0 0 1rem rgba($color-primary, 0.5);
+      }
+    }
+  }
+
+  &--third {
+    position: relative;
+    border-radius: 0.25rem;
+    padding: rem(12) rem(24);
+    background: url('@/assets/images/layout/btn-bg-03.png') no-repeat top left / 100% 100%;
+    box-shadow: none;
+    color: $color-white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0.125rem;
+      right: 0.25rem;
+      height: 100%;
+      border-radius: inherit;
+      transform: skew(10deg);
+      transition: $transition-primary;
+    }
+
+    @include hover {
+      &::after {
+        box-shadow: 0 0 2rem rgba(#3A3F50, 0.75);
+      }
+    }
+  }
+
+  &--black {
+    background: $color-black;
+    color: $color-white;
+
+    @include hover {
+      background: $color-yellow;
+      color: $color-black;
+    }
+
+    &:focus,
+    &:active {
+      background: $color-yellow;
+      color: $color-black;
+    }
+  }
+
+  &--sm {
+    padding: rem(4) rem(24) rem(2);
+    box-shadow: 0 1.425px 0 0 #E1A926 inset, 0 1.9px 0 0 rgba(0, 0, 0, 0.25);
+    font-size: rem(10);
+    line-height: 1;
+  }
+}
+
+.btn-icon {
+  display: block;
+  width: rem(62);
+  height: rem(45);
+  background: url('@/assets/images/layout/header-login.png') no-repeat right bottom / 100% 100%;
+}
+
+// ========== INPUTS ========== //
+.input {
+  &.input--toggle {
+    position: relative;
+
+    input {
+      padding-right: rem(64);
+    }
+  }
+
+  input,
+  textarea {
+    appearance: none;
+    outline: none;
+    border: rem(1) solid #1F1E25;
+    border-radius: rem(8);
+    width: 100%;
+    padding: rem(16) rem(20);
+    background-color: #1F1E25;
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: 1;
+    color: $color-white;
+    resize: none;
+    transition: $transition-primary;
+
+    &:not(:disabled) {
+      @include hover {
+        border-color: $color-primary;
+      }
+
+      &:focus,
+      &:active {
+        border-color: $color-primary;
+      }
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    &::placeholder {
+      color: rgba($color-white, 0.4);
+    }
+  }
+
+  &--dark {
+    input,
+    textarea {
+      border-color: #3B096C;
+      border-radius: rem(8);
+      padding: rem(16) rem(16);
+      background-color: #3B096C;
+      font-weight: 500;
+      color: $color-white;
+
+      &::placeholder {
+        color: rgba($color-white, 0.4);
+      }
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: rem(64);
+    height: 100%;
+    background: none;
+    color: $color-white;
+    cursor: pointer;
+    transition: color $transition-duration-primary;
+
+    &::before {
+      content: 'C';
+    }
+
+    &:not(:disabled) {
+      @include hover {
+        color: $color-yellow;
+      }
+
+      &:focus,
+      &:active {
+        color: $color-yellow;
+      }
+    }
+  }
+
+  &--copy {
+    position: relative;
+
+    input,
+    textarea {
+      padding-right: rem(85);
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: rem(54);
+    height: 100%;
+    background: none;
+    color: rgba($color-white, 0.6);
+    transition: color $transition-duration-primary;
+    cursor: pointer;
+
+    @include hover {
+      color: $color-white;
+    }
+
+    &::after {
+      content: "\e9ce";
+      font-family: 'icomoon';
+    }
+  }
+}
+
+// ========== SELECT ========== //
+.select {
+  select {
+    outline: none;
+    border: rem(1) solid #3B096C;
+    border-radius: rem(8);
+    width: 100%;
+    padding: rem(15) rem(14);
+    background-color: #3B096C;
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: 1.2;
+    color: $color-white;
+    transition: $transition-primary;
+
+    @include hover {
+      border-color: $color-primary;
+    }
+
+    &:focus,
+    &:active {
+      border-color: $color-primary;
+    }
+  }
+}
+
+// Search Form
+.search-form {
+  display: flex;
+  height: rem(45);
+  background: url('@/assets/images/layout/search-form-bg.png') no-repeat left top / 100% 100%;
+
+  @include respond-below(md) {
+    padding-right: 0.5rem;
+  }
+
+  &__input {
+    position: relative;
+    flex: 1 1 auto;
+
+    &-img {
+      position: absolute;
+      left: px(12);
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      width: px(28);
+      height: px(28);
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    input {
+      -moz-appearance: textfield;
+      appearance: none;
+      border: none;
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      padding: rem(8) rem(18);
+      padding-left: rem(48);
+      background: none;
+      color: $color-white;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+    }
+  }
+
+  &__select {
+    border: none;
+    padding: 0.5rem;
+    background: url('@/assets/images/layout/header-search-select-bg.png') no-repeat left center / 80% 64%;
+    font-family: $font-family-primary;
+    font-size: rem(14);
+    font-weight: 750;
+    color: $color-white;
+    text-transform: uppercase;
+
+
+
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      color: $color-black;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    border: none;
+    padding: rem(12) rem(32);
+    background: url('@/assets/images/layout/search-form-btn-bg.png') no-repeat left top / 100% 100%;
+    font-family: $font-family-primary;
+    font-size: 1rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @include respond-below(md) {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0.25rem;
+      right: 0.25rem;
+      height: 100%;
+      border-radius: inherit;
+      transform: skew(-10deg);
+      transition: $transition-primary;
+    }
+
+    @include hover {
+      &::after {
+        box-shadow: 0 0 1rem rgba($color-primary, 0.5);
+      }
+    }
+  }
+}
+
+.vs {
+  &__dropdown-toggle {
+    min-height: rem(64);
+  }
+
+  &__selected {
+    min-height: 100%;
+  }
+}
+
+// Form Label
+.form-label {
+  display: block;
+  font-size: rem(16);
+  font-weight: 700;
+}
+
+// Action Btn
+.action-btn {
+  border: none;
+  border-radius: rem(8);
+  padding: rem(6) rem(8);
+  background-color: #008000;
+  font-size: rem(12);
+  font-weight: 600;
+  color: $color-white;
+  cursor: pointer;
+  transition: background-color $transition-duration-primary;
+
+  @include hover {
+    background-color: darken(#008000, 5%);
+  }
+
+  &--danger {
+    background-color: #8F3333;
+
+    @include hover {
+      background-color: darken(#8F3333, 5%);
+    }
+  }
+}

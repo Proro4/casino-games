@@ -1,0 +1,364 @@
+.diamonds{
+    padding: 50px;
+    background: linear-gradient(to bottom, #211B37, #14161C);
+    border-radius: 30px;
+    position: relative;
+    &::after,
+    &::before{
+        content: '';
+        position: absolute;
+        left: 4%;
+        bottom: 0;
+        width: 92%;
+        height: 35px;
+        background-image: url('@/assets/images/games/diamond-bg-border.png');
+        background-size: cover;
+        background-position: bottom center;
+    }
+    &::before{
+        bottom: inherit;
+        top: 0;
+        transform: rotate(180deg);
+    }
+
+    @media screen and (max-width: 720px){
+        background-image: none;
+        padding: 130px 20px 50px;
+        &::after,
+        &::before{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 992px){
+        padding-top: 100px;
+    }
+    @media screen and (max-width: 670px){
+        padding: 100px 15px 50px;
+    }
+    &__info{
+        padding: 20px 10px;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            user-select: none;
+            background-image: 
+                url('@/assets/images/games/block-border-left-top.png'), 
+                url('@/assets/images/games/block-border-right-top.png'),
+                url('@/assets/images/games/block-border-left-bottom.png'), 
+                url('@/assets/images/games/block-border-right-bottom.png');
+            background-repeat: no-repeat;
+            background-position: left top, right top, left bottom, right bottom;
+        }
+    }
+    &__info-list{
+        padding: 35px 40px;
+        background: linear-gradient(to bottom, #19162A, #40207D);
+        display: flex;
+        flex-direction: column;
+    }
+    &__info-item{
+        height: 52px;
+        border-radius: 2px;
+        border: 2px solid #8536D9;
+        background: #10121B80;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 20px;
+        @media screen and (max-width: 670px) {
+            padding: 0 10px;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+        &:hover{
+            background: #10121B;
+            .diamonds__diamond-min{
+                &.active{
+                    &::after{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &__info-count{
+        font-family: 'Cafe Nero M54';
+        font-size: 14px;
+        color: white;
+    }
+    &__info-diamonds{
+        display: flex;
+        @media screen and (max-width: 670px){
+            height: 27px;
+            width: 28px;
+        }
+    }
+    &__info-diamond{
+        height: 32px;
+        width: 34px;
+        position: relative;
+        margin-right: 2px;
+        &:last-child{
+            margin-right: 0;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-image: url('@/assets/images/games/diamond-bck.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+    &__diamond-min{
+        display: block;
+        position: relative;
+        height: 28px;
+        width: 30px;
+        &.show{
+            &::after{
+                content: '';
+                position: absolute;
+                opacity: 0.5;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 4px;
+                background-image: url('@/assets/images/games/diamond-border.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+        &.active{
+            &::before{
+                filter: grayscale(0);
+            }
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            height: 34px;
+            width: 34px;
+            left: 0;
+            top: -2px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 1;
+            filter: grayscale(1);
+            transition: 0.3s all;
+        }
+        &.green{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-green.png');
+            }
+        }
+        &.yellow{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-yellow.png');
+            }
+        }
+        &.orange{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-orange.png');
+            }
+        }
+        &.red{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-red.png');
+            }
+        }
+        &.pink{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-pink.png');
+            }
+        }
+        &.blue{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-blue.png');
+            }
+        }
+        &.purple{
+            &::before{
+                background-image: url('@/assets/images/games/diamonds-min-purple.png');
+            }
+        }
+    }
+    &__block-top{
+        background: url('@/assets/images/games/diamonds-line.png');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &__modal{
+        height: 100%;
+        background: url('@/assets/images/games/diamonds-girl.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        @media screen and (max-width: 992px) {
+            display: none;
+        }
+    }
+    &__modal-block{
+        border: 2px solid #8536D9;
+        padding: 15px 20px;
+        height: auto;
+        width: 100%;
+        background-color: #8536D912;
+        position: absolute;
+        left: 0;
+        top: 20px;
+    }
+    &__game{
+        width: 100%;
+        margin-top: 50px;
+    }
+    &__game-list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    &__game-item{
+        height: 325px;
+        width: 15%;
+        background-image: url('@/assets/images/games/diamonds-light.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        @media screen and (max-width: 992px){
+            width: 20%;
+            height: 250px;
+        }
+        @media screen and (max-width: 800px){
+            height: 200px;
+        }
+        @media screen and (max-width: 720px){
+            height: auto;
+        }
+    }
+    &__game-diamond{
+        height: 185px;
+        width: 100%;
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 65%;
+            z-index: 1;
+            transition: 0.3s all;
+            @media screen and (max-width: 992px){
+                background-size: 55%;
+                background-position: center top 30px;
+            }
+            @media screen and (max-width: 670px){
+                background-size: 50%;
+                background-position: center top 20px;
+            }
+        }
+        &.show{
+            animation: 1.5s diamondShow 1; 
+            animation-direction: alternate;
+        }
+        &.green{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-green.png');
+                animation: 2s ease-in 2.2s diamondFly infinite; 
+            }
+        }
+        &.yellow{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-yellow.png');
+                animation: 3s ease-in 2.6s diamondFly infinite; 
+            }
+        }
+        &.orange{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-orange.png');
+                animation: 3.5s ease-in 2.5s diamondFly infinite; 
+            }
+        }
+        &.red{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-red.png');
+                animation: 3.3s ease-in 2.4s diamondFly infinite; 
+            }
+        }
+        &.pink{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-pink.png');
+                animation: 3.6s ease-in 2.3s diamondFly infinite; 
+            }
+        }
+        &.blue{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-blue.png');
+                animation: 3.1s ease-in 2.2s diamondFly infinite; 
+            }
+        }
+        &.purple{
+            &::before{
+                background-image: url('@/assets/images/games/diamond-purple.png');
+                animation: 2.7s ease-in 2.1s diamondFly infinite; 
+            }
+        }
+    }
+}
+
+@keyframes diamondShow {
+    0%{
+        opacity: 0;
+        transform: translateY(-150px);
+    } 
+    15%{
+        transform: translateY(0px);
+    }
+    30%{
+        transform: translateY(10px);
+    }
+    45%{
+        transform: translateY(-20px);
+    }
+    60%{
+        transform: translateY(5px);
+    }
+    75%{
+        transform: translateY(-10px);
+    }
+    90%{
+        transform: translateY(2px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes diamondFly {
+    0%{
+        transform: translateY(0);
+    }
+    33%{
+        transform: translateY(-3px);
+    }
+    66%{
+        transform: translateY(3px);
+    }
+}

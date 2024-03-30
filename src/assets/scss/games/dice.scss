@@ -1,0 +1,299 @@
+
+.dice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(21,22,34);
+  background-image: url('@/assets/images/games/game/dice-bg-2.png');
+  overflow: hidden;
+  position: relative;
+  border-radius: 50px; 
+  padding: 100px 0;  
+  @media screen and (max-width: 992px){
+    padding: 10px 0;
+    background-color: transparent;
+    background-image: none; 
+  }
+  @media screen and (max-width: 668px){
+    padding: 80px 0;
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border-radius: 0;
+  }
+  &__bck{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    user-select: none;
+    pointer-events: none;
+    background-image: url('@/assets/images/games/game/dice-bg.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 10;
+    &::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 300px;
+      user-select: none;
+      pointer-events: none;
+      width: 100%;
+      background: linear-gradient(to bottom, transparent, rgb(21, 22, 34), transparent);
+      animation: diceBgAnimate 5s infinite;
+    }
+    @media screen and (max-width: 992px){
+        display: none;
+    }
+  }
+  &__block{
+    width: 100%;
+    padding: 50px 0 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 992px){
+      background-color: #101419;
+      position: relative;
+      &::before{
+        border-radius: 7%;
+        position: absolute;
+        z-index: 0;
+        content: '';
+        user-select: none;
+        pointer-events: none;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0; 
+        background-image: url('@/assets/images/games/game/dice-bg-min.png');
+      }
+      &::after{
+        content: ''; 
+        user-select: none;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-image:
+        url('@/assets/images/games/game/game-border-left-top.png'), 
+        url('@/assets/images/games/game/game-border-right-top.png'), 
+        url('@/assets/images/games/game/game-border-left-bottom.png'),
+        url('@/assets/images/games/game/game-border-right-bottom.png');
+        background-repeat: no-repeat;
+        background-position: left top, right top, left bottom, right bottom;
+        @media screen and (max-width: 992px){
+          background-size: 35px;
+        }
+      }
+    }
+    @media screen and (max-width: 668px){
+      border-radius: 0;
+      padding: 30px 0 0;
+      height: 250px;
+      &::after{
+        display: none;
+      }
+    }
+    @media screen and (max-width: 500px){
+      padding-top: 0px;
+      height: 200px;
+    }
+  }
+  &__block-game{
+    z-index: 20;
+    position: relative;
+    min-height: 275px;
+    min-width: 906px;
+    background-image: url('@/assets/images/games/game/dice-border.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 75px;
+    position: relative;
+    padding: 43px 45px 30px;
+    box-sizing: border-box;
+    transition: 0.3s all;
+    margin-top: 15px;
+    @media screen and (max-width: 992px){
+      margin-bottom: 90px;
+      margin-top: 20px;
+    }
+    &::before,
+    &::after{
+      content: '';
+      position: absolute;
+      height: 2px;
+      border-radius: 100%;
+      filter: blur(4px);
+      background: linear-gradient(to right, transparent, #9700d5, #d56fff, #9700d5, transparent);
+      box-shadow: 0 0 3px 0px #9700d5;
+    }
+    &::before{
+      top: 13px;
+      width: 150px;
+      left: 380px;
+      animation: ligtAnimation 4s infinite;
+    }
+    &::after{
+      bottom: 20px;
+      width: 150px;
+      left: 380px;
+      animation: ligtAnimation 2s infinite;
+    }
+    @media screen and (max-width: 992px){
+      transform: scale(0.69);
+    }
+    @media screen and (max-width: 880px){ 
+    }
+    @media screen and (max-width: 668px){
+      transform: scale(0.49);
+    }
+    @media screen and (max-width: 500px){
+      transform: scale(0.39);
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: 408px){
+      transform: scale(0.34);
+    }
+    @media screen and (max-width: 350px){
+      transform: scale(0.30);
+    }
+  }
+  &__block-numbers{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    overflow: hidden;
+    max-height: 200px;
+    img{
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 30px;
+    }
+  }
+  &__numbers-list{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    transition: 2s all;
+    transform: translateY(0px);
+  }
+  &__block-hight,
+  &__block-short{
+    position: absolute;
+    font-size: 36px;
+    font-weight: normal;
+    color: white;
+    top: calc(50% - 20px);
+    font-family: 'Cafe Nero M54';
+    width: 181px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 610px){
+      font-size: 55px;
+    }
+    span{
+      font-family: 'Avenir Next';
+      font-weight: normal;
+      position: relative;
+      display: inline-block;
+      height: 26px;
+      width: 11px;
+      margin: 0 11px 0 15px;
+      &::after,
+      &::before{
+        content: '';
+        position: absolute;
+        height: 15px;
+        width: 2px;
+        border-radius: 20px;
+        background-color: white;
+        right:5px;
+      }
+      &::after{
+        top:0;
+        transform: rotate(45deg);
+      }
+      &::before{
+        bottom:0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &__block-hight{
+    right: 95%;
+    @media screen and (max-width: 1610px){
+      right: 80%;
+      bottom: calc(100% + 15px);
+      top: inherit
+    }
+    @media screen and (max-width: 992px){
+      right: 0;
+      width: 100%;
+      justify-content: center;
+      bottom: inherit;
+      top: calc(100% + 20px)
+    }
+    @media screen and (max-width: 668px){
+      width: inherit;
+      top: inherit;
+      bottom: calc(100% + 15px);
+      right: 75%;
+    }
+  }
+  &__block-short{
+    left: 100%;
+    @media screen and (max-width: 1610px){
+      left: 80%;
+      bottom: calc(100% + 15px);
+      top: inherit
+    }
+    @media screen and (max-width: 992px){
+      right: 0;
+      left: inherit;
+      width: 100%;
+      justify-content: center;
+      bottom: inherit;
+      top: calc(100% + 20px)
+    } 
+    @media screen and (max-width: 668px){
+      width: inherit;
+      top: inherit;
+      bottom: calc(100% + 15px);
+      right: inherit;
+      left: 75%;
+    }
+  }
+}
+
+
+@keyframes  diceBgAnimate{
+  0%{
+    top: -50%;
+  }
+  50%{
+    top: 100%;
+  }
+  100%{
+    top: -50%;
+  }
+}
+
+@keyframes ligtAnimation{
+  0%{
+    box-shadow: 0 0 1px 0px #9700d5;
+  }
+  50%{
+    box-shadow: 0 0 5px 4px #9700d5;
+  }
+  100%{
+    box-shadow: 0 0 3px 0px #9700d5;
+  }
+}

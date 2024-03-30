@@ -1,0 +1,188 @@
+.limbo{
+    padding: 50px 50px 0px;
+    min-height: 500px;
+    background-color: #12131f; 
+    position: relative;
+    opacity: 1;
+    .gamescreen__form-auto{
+        padding: 0;
+    }
+    &::before{
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0.3;
+        background-image: url('@/assets/images/games/limbo-bg.jpg');
+        background-position: center;
+        background-size: cover;
+        transition: 1.5s all;
+    }
+    &.crash-animate{
+        &::before{
+            opacity: 1;
+        }
+    }
+    &__block{
+        position: relative;
+        z-index: 1;
+    }
+    &__game{
+        padding: 40px 0;
+    }
+    &__game-time{
+        font-size: 68px;
+        font-family: 'Avenir Next';
+        color: white;
+        font-weight: 650;
+        height: 146px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('@/assets/images/games/limbo-planet.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-bottom: 15px;
+        &.win{
+            color: greenyellow;
+        }
+        &.lose{
+            color: red;
+        }
+        span{
+            font-size: 48px;
+            color: #2A79D1;
+        }
+
+    }
+    &__game-rocket{
+        height: 310px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        img{
+            &.wait{
+                animation: 0.4s rocketWait infinite;
+            }
+        }
+        &.crash-animate{
+            .limbo__rocket-img{
+                animation: 2.0s linear limboRocketStart 1;
+                img{
+                    animation: 2.0s hideImg 1;
+                }
+                &::before{
+                    animation: 2s linear limboRocketFireStart 1;
+                }
+                &::after{
+                    animation: rocketCrash 2s steps(4) 1;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &__rocket-img{
+        position: relative;
+        width: 200px;
+        height: 310px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before{
+            position: absolute;
+            content: '';
+            height: 50px;
+            width: 50px;
+            background-image: url('@/assets/images/games/limbo-rocket/limbo-rocket-1.png');
+            background-repeat: no-repeat;
+            background-size: 50px 0px;
+            transform: scale(2);
+            left: calc(50% - 25px);
+            bottom: -50px;
+            z-index: 1;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            height: 135px;
+            width: 150px;
+            background-image: url('@/assets/images/games/limbo-rocket-crash.png');
+            opacity: 0;
+            transform: scale(2);
+            left: 20px;
+            top: 50px;
+            z-index: 1;
+        }
+
+    }
+}
+
+@keyframes rocketWait{
+    0%{
+        transform: translateX(0px);
+    }
+    25%{
+        transform: translateX(-2px);
+    }
+    50%{
+        transform: translateX(2px);
+    }
+    75%{
+        transform: translateX(-2px);
+    }
+    100%{
+        transform: translateX(2px);
+    }
+}
+
+@keyframes limboRocketStart {
+    0%{
+        transform: translateY(0px);
+    }
+    30%{
+        transform: translateY(-200px);
+    }
+    41%{
+        transform: translateY(-200px);
+    }
+    100%{
+        transform: translateY(-200px);
+    }
+}
+@keyframes limboRocketFireStart {
+    0%{
+        background-size: 50px 0px;
+    }
+    40%{
+        background-size: 50px 50px;
+    }
+    41%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        background-size: 50px 70px;
+    }
+}
+@keyframes hideImg {
+    30%{
+        opacity: 1;
+    }
+    41%{
+        opacity: 0; 
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes rocketCrash {
+    0% {opacity: 0;}
+    35% {opacity: 0;}
+    36% { background-position:    0   0; opacity: 1;}
+    50%   { background-position: -600px 0; opacity: 1;}
+    52% {opacity: 0;}
+    100% {opacity: 0;}
+}

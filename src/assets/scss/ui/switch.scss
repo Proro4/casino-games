@@ -1,0 +1,50 @@
+// =========== SWITCH ========== //
+.switch {
+  position: relative;
+  display: block;
+  padding-left: rem(44);
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:checked {
+      + .switch__slider {
+        border-color: $color-primary;
+
+        &::before {
+          background-color: $color-primary;
+          transform: translateX(150%);
+        }
+      }
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: rem(1) solid #1F1E25;
+    border-radius: rem(16);
+    width: rem(44);
+    height: rem(22);
+    background-color: #1F1E25;
+    cursor: pointer;
+    transition: $transition-primary;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: rem(4);
+      bottom: rem(3);
+      border-radius: 100%;
+      width: rem(14);
+      height: rem(14);
+      background-color: #95959C;
+      transition: $transition-primary;
+    }
+  }
+}

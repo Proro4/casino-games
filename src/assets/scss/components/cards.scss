@@ -1,0 +1,507 @@
+// Card
+.card {
+  position: relative;
+  z-index: 0;
+  background-color: #292830;
+
+  &__body {
+    padding: rem(48) rem(40);
+
+    @include respond-below(md) {
+      padding: rem(36) rem(24);
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.05;
+
+    &--01 {
+      left: 0;
+      top: 0;
+      opacity: 0.025;
+    }
+
+    &--02 {
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+// Coin Card 
+.coin-card {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  cursor: pointer;
+
+  @include hover {
+    .coin-card__title {
+      color: $color-white;
+    }
+  }
+
+  &__img {
+    position: relative;
+    flex: 0 0 rem(38);
+    border-radius: 50%;
+    width: rem(38);
+    height: rem(38);
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-primary;
+    font-size: rem(17);
+    font-weight: 600;
+    color: $color-grey;
+    transition: color $transition-duration-primary;
+
+    @include respond-below(sm) {
+      display: none;
+    }
+  }
+}
+
+// Tourn Card
+.tourn-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: rem(6);
+  min-height: var(--tournament-card-height);
+  padding: rem(32) rem(32);
+  background: #343241 url('@/assets/images/layout/tourn-card-01.jpg') no-repeat top left / 100% 100%;
+
+  @include respond-below(md) {
+    min-height: var(--tournament-card-height-sm);
+  }
+
+  &__value {
+    position: relative;
+    z-index: 10;
+    align-self: center;
+    display: inline-block;
+    margin-bottom: rem(36);
+    padding: rem(12) rem(42) rem(8);
+    background: url('@/assets/images/layout/tourn-card-title-bg.png') no-repeat top left / 100% 100%;
+    font-family: $font-family-secondary;
+    font-size: rem(28);
+    line-height: 1.2;
+    color: $color-yellow;
+    text-align: center;
+
+    @include respond-below(md) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 15;
+    font-size: px(24);
+    text-align: center;
+    text-transform: uppercase;
+
+    @include respond-below(md) {
+      font-size: rem(19);
+    }
+
+    span {
+      color: $color-black;
+    }
+  }
+
+  &__img {
+    position: absolute;
+
+    &--01 {
+      max-height: 110%;
+      min-height: 110%;
+      right: 0;
+      bottom: 0;
+    }
+
+    &--02 {
+      left: rem(10);
+      top: rem(10);
+      max-width: 30%;
+    }
+  }
+}
+
+// Earn Card
+.earn-card {
+  position: relative;
+  border-radius: rem(6);
+  min-height: var(--tournament-card-height);
+  padding: rem(18) rem(24);
+  background: #343241 url('@/assets/images/layout/earn-card-bg.jpg') no-repeat top left / 100% 100%;
+  color: $color-black;
+
+  @include respond-below(md) {
+    min-height: var(--tournament-card-height-sm);
+  }
+
+  &__content {
+    max-width: 50%;
+  }
+
+  &__value {
+    position: relative;
+    z-index: 10;
+    font-size: px(99);
+    line-height: 1.1;
+    text-shadow: -0.35rem 0.35rem 0 rgba($color-black, 0.1);
+  }
+
+  &__title {
+    position: relative;
+    z-index: 15;
+    font-size: px(23);
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  &__list {
+    font-family: $font-family-secondary;
+    font-size: rem(12);
+    line-height: 1.2;
+
+    > li {
+      display: flex;
+      align-items: center;
+      gap: rem(8);
+
+      &::before {
+        content: '';
+        display: inline-block;
+        border-radius: 50%;
+        flex: 0 0 px(42);
+        width: px(42);
+        height: px(42);
+        background: url('@/assets/images/layout/earn-card-list-decor.png') no-repeat center / contain;
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    right: -3rem;
+    bottom: 0;
+    max-height: 110%;
+    min-height: 110%;
+    max-width: 72%;
+  }
+}
+
+// Invite Card
+.invite-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: rem(6);
+  min-height: var(--tournament-card-height);
+  padding: rem(18) 0;
+  background: #343241 url('@/assets/images/layout/invite-card-bg.jpg') no-repeat top left / 100% 100%;
+  color: $color-black;
+
+  @include respond-below(md) {
+    min-height: var(--tournament-card-height-sm);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    max-width: 56%;
+  }
+
+  &__title {
+    padding: px(2) px(20);
+    font-size: rem(20);
+    color: $color-white;
+    text-transform: uppercase;
+
+    @include respond-below(md) {
+      font-size: rem(15);
+    }
+  }
+
+  &__subtitle {  
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    padding: px(5) px(20);
+    background: url('@/assets/images/layout/invite-card-title-bg.png') no-repeat top left / 100% 100%;
+    font-size: px(26);
+    text-transform: uppercase;
+
+    @include respond-below(md) {
+      font-size: rem(20);
+    }
+  }
+
+  &__btn-box {
+    text-align: right;
+  }
+
+  &__btn {
+    border: px(10) solid $color-grey-dark;
+    border-radius: 50%;
+    width: px(100);
+    height: px(100);
+    background: linear-gradient(101.09deg, #FEEB3C 45.46%, #FE843B 107.76%);
+    cursor: pointer;
+    transition: $transition-primary;
+  }
+
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-height: 110%;
+    min-height: 110%;
+    max-width: 80%;
+  }
+}
+
+// Bonus Card
+.bonus-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 0.35rem;
+  min-height: px(350);
+  padding: px(40) px(32);
+  background: url('@/assets/images/layout/bonus-card-bg.jpg') no-repeat top left / 100% 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: rem(10);
+    border: 0.125rem solid #C6E437;
+    border-radius: 0.25rem;
+  }
+
+  &__img {
+    position: absolute;
+    left: 50%;
+    bottom: px(42);
+    max-width: 110%;
+    min-width: 100%;
+    max-height: 86%;
+    transform: translateX(-50%);
+  }
+
+  &__title {
+    position: relative;
+    z-index: 10;
+    margin-bottom: rem(20);
+    font-size: px(32);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+// Banner Card
+.banner-card {
+  border-radius: rem(8);
+  padding: rem(32);
+  background: #9033DB url('@/assets/images/affiliate/b-card-bg.jpg') no-repeat top left / 100% 100%;
+  color: $color-white;
+  text-align: center;
+
+  &__title {
+    margin-bottom: rem(12);
+    font-size: rem(24);
+    line-height: 1;
+  }
+}
+
+// Flow Card
+.flow-card {
+  border-radius: rem(6);
+  padding: rem(42);
+  background: #343241;
+
+  &__header {
+    margin-bottom: rem(28);
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    margin: rem(-3) rem(-5);
+
+    > li {
+      padding: rem(3) rem(5);
+
+      > a {
+        display: inline-flex;
+        align-items: center;
+        border: rem(2) solid #3A3F50;
+        border-radius: rem(100);
+        padding: rem(10) rem(20);
+        background-color: #25242D;
+        font-size: rem(12);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $color-white;
+        transition: $transition-primary;
+
+        @include hover {
+          background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+          color: $color-black;
+        }
+
+        &:focus,
+        &:active {
+          background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+          color: $color-black;
+        }
+
+        &::before {
+          margin-right: rem(8);
+        }
+      }
+    }
+  }
+
+  &__btn-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(6) rem(12);
+  }
+}
+
+.flow-card-header {
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__num {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: rem(16);
+    border: rem(6) solid #464455;
+    border-radius: 50%;
+    flex: 0 0 rem(70);
+    width: rem(70);
+    height: rem(70);
+    background-color: #343241;
+    font-family: $font-family-secondary;
+    font-size: rem(21);
+    text-transform: uppercase;
+    color: $color-black;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      width: rem(40);
+      height: rem(40);
+      transform: translate(-50%, -50%);
+      background: linear-gradient(158deg, #FEEB3C 0%, #FE843B 100%);
+      filter: blur(5.5px);
+    }
+  }
+
+  &__title {
+    font-size: rem(18);
+    text-transform: uppercase;
+  }
+
+  &__body {
+    font-size: rem(14);
+    font-weight: 450;
+    color: rgba($color-white, 0.7);
+  }
+}
+
+.flow-card-connection {
+  display: flex;
+  align-items: center;
+
+  @include respond-below(md) {
+    flex-direction: column;
+  }
+
+  &::after {
+    content: '';
+    order: 2;
+    display: block;
+    flex: 0 0 rem(57);
+    margin: 0 rem(12);
+    height: rem(1);
+    background-color: rgba($color-white, 0.4);
+
+    @include respond-below(md) {
+      margin: rem(12) 0;
+      height: rem(57);
+      width: rem(1);
+    }
+    
+  }
+
+  &__left {
+    order: 1;
+    border: rem(2) solid #373848;
+    border-radius: rem(100);
+    padding: rem(16) rem(36);
+    background-color: #1F1E25;
+    font-size: rem(16);
+    font-weight: 750;
+    text-transform: uppercase;
+  }
+
+  &__right {
+    order: 3;
+    border-radius: rem(8);
+    padding: rem(16) rem(28);
+    background-color: #1F1E25;
+  }
+
+  &__title {
+    margin-bottom: rem(4);
+    padding-right: rem(16);
+    font-family: $font-family-secondary;
+    font-size: rem(15);
+    text-transform: uppercase;
+  }
+
+  &__body {
+    font-size: rem(14);
+    font-weight: 450;
+    line-height: 1.4;
+    color: rgba($color-white, 0.7);
+  }
+}
