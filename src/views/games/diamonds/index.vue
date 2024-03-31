@@ -97,14 +97,15 @@
               </div>
             </div>
           </div>
-          <div class="gamescreen__form-top">
-                <div class="game-label w-100 w-m-100 min-title mb-20">
+          <div class="gamescreen__form-top diamonds__form-top">
+                <!-- <div class="game-label w-100 w-m-100 min-title mb-20"> -->
                   <input-value
                     :value="betSize"
                     placeholder="BET SIZE"
                     :onlyNumber="true"
                     @onBlurFunc="() => validBetSize()"
                     @changeValue="(e) => (betSize = e)"
+                    style="width: 75%"
                   >
                     <ButtonSelectList
                       :buttonList="betSizeArray"
@@ -112,7 +113,6 @@
                       @changeButtonSelect="(e) => changeButtonSelect(e)"
                     />
                   </input-value>
-                </div>
             <GameButton
               text="Bet"
               @onClick="() => startGame()"
@@ -551,5 +551,11 @@
 <style lang="scss" scoped>
   .w-33{
     width: 33%;
+  }
+  .gamescreen__form-top.diamonds__form-top{
+    flex-wrap: nowrap;
+    @media screen and (max-width: 992px) {
+      flex-wrap: wrap;
+    }
   }
 </style>

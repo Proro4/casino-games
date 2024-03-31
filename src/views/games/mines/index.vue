@@ -106,6 +106,72 @@
                     />
                   </input-value>
                 </div>
+          <div class="gamescreen__form-auto" style="padding: 0;" v-if="manualAutoStatus">
+            <div class="game-label w-50 w-s-100 mt-10">
+              <div class="game-label w-100 p-false m-title">
+                <InputValue
+                  :value="onWin"
+                  :onlyNumber="true"
+                  placeholder="On Win"
+                  :changeValue="(e) => (onWin = e)"
+                >
+                  <div class="input-value__content-text">%</div>
+                </InputValue>
+              </div>
+              <div class="game-label w-100 p-false">
+                <RadioButtons
+                  :list="radioList"
+                  radioIndex="A"
+                  :activeRadio="activeOnWinRadio"
+                  @changeRadio="(e) => (activeOnWinRadio = e)"
+                />
+              </div>
+            </div>
+
+            <div class="game-label w-50 w-s-100 mt-10">
+              <div class="game-label w-100 p-false m-title">
+                <InputValue
+                  :value="onLose"
+                  :onlyNumber="true"
+                  placeholder="On Lose"
+                  @changeValue="(e) => (onLose = e)"
+                >
+                  <div class="input-value__content-text">%</div>
+                </InputValue>
+              </div>
+
+              <div class="game-label w-100 p-false">
+                <RadioButtons
+                  :list="radioList"
+                  radioIndex="B"
+                  :activeRadio="activeOnLoseRadio"
+                  @changeRadio="(e) => (activeOnLoseRadio = e)"
+                />
+              </div>
+            </div>
+
+            <div class="game-label w-50 w-s-100 mb-20">
+              <InputValue
+                :value="stopOnProfit"
+                :onlyNumber="true"
+                placeholder="Stop on profit"
+                @changeValue="(e) => (stopOnProfit = e)"
+              >
+                <img src="@/assets/images/games/almaz-2-ic.png" alt="almaz" />
+              </InputValue>
+            </div>
+
+            <div class="game-label w-50 w-s-100 mb-20">
+              <InputValue
+                :value="stopOnLoss"
+                :onlyNumber="true"
+                placeholder="Stop on income"
+                @changeValue="(e) => (stopOnLoss = e)"
+              >
+                <img src="@/assets/images/games/almaz-2-ic.png" alt="almaz" />
+              </InputValue>
+            </div>
+          </div>
                 <div class="game-label w-10 mines__buttons" v-if="playStatus">
                   <div class="col-md-6">
                     <div class="mines-btn auto" @click="() => pickRandomTile()">

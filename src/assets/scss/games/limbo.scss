@@ -59,7 +59,7 @@
 
     }
     &__game-rocket{
-        height: 310px;
+        height: 260px;
         display: flex;
         justify-content: center;
         position: relative;
@@ -91,6 +91,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transform: scale(0.9);
         &::before{
             position: absolute;
             content: '';
